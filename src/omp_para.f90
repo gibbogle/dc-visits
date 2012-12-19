@@ -1,4 +1,4 @@
-! This is the general version, for M nodes in a cuboid blob. 
+! This is the general version, for M nodes in a cuboid blob.
 
 ! Extension to general geometry:
 ! We need to be able to handle a spherical blob, for example.
@@ -3212,7 +3212,7 @@ do ctype = 1,2
 	!		write(nfout,'(a,f8.2)') 'Average number of distinct DC contacts: ',ave_distinct
 	!		write(nfout,*)
 			total = 0
-			do i = 1,1000
+			do i = 0,1000
 				total = total + DCtotvisits(i,iTC,iDC,ctype)
 			enddo
 			nt = 0
@@ -3234,6 +3234,8 @@ do ctype = 1,2
 	!		write(nfout,*)
 			ndd(iTC,iDC) = nd
 			ntt(iTC,iDC) = nt
+			write(*,*) 'iTC, iDC, nd, nt: ',iTC, iDC, nd, nt
+			write(nfout,*) 'iTC, iDC, nd, nt: ',iTC, iDC, nd, nt
 		enddo
 	enddo
 	ndt = 0
@@ -3246,7 +3248,7 @@ do ctype = 1,2
 	write(nfout,'(a,4f6.1)') 'Average distinct visits: ',((ave_distinct(iTC,iDC),iTC=1,2),iDC=1,2)
 	write(nfout,'(a,4f6.1)') 'Average total visits:    ',((ave_total(iTC,iDC),iTC=1,2),iDC=1,2)
 	write(nfout,'(a)') 'Distributions:'
-	do i = 1,ndt
+	do i = 0,ndt
 		write(nfout,'(i4,8f8.4)') i,((visit_dist(i,iTC,iDC),iTC=1,2),iDC=1,2),((totvisit_dist(i,iTC,iDC),iTC=1,2),iDC=1,2)
 	enddo
 enddo

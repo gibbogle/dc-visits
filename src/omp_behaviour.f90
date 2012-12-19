@@ -521,6 +521,7 @@ integer :: i, invitro, shownoncog, ncpu_dummy, dcsinjected, ispecial
 integer :: usetraffic, useexitchemo, useDCchemo, computedoutflow, useCCL3secretion
 character(64) :: specialfile
 character(4) :: logstr
+logical, parameter :: use_chemo = .false.
 
 ok = .false.
 !write(*,*) 'Read cell parameter file: ',inputfile
@@ -615,18 +616,19 @@ read(nfcell,*) exit_region                  ! blob region for cell exits (1 = al
 read(nfcell,*) chemo_radius			        ! radius of chemotactic influence (um)
 read(nfcell,*) chemo_K_exit                 ! level of chemotactic influence towards exits
 read(nfcell,*) chemo_K_DC                  ! level of chemotactic influence towards DCs
-!read(nfcell,*) receptor(CCR1)%strength      ! relative strength of CCL3-CCR1 chemotactic influence (chemo_K_DC)
-read(nfcell,*) receptor(CCR1)%level(1)
-read(nfcell,*) receptor(CCR1)%level(2)
-read(nfcell,*) receptor(CCR1)%level(3)
-read(nfcell,*) receptor(CCR1)%saturation_threshold	! CCL3 signal level to saturate CCR1 receptor
-read(nfcell,*) receptor(CCR1)%refractory_time	! Time for CCR1 receptor to recover sensitivity after desensitization
-read(nfcell,*) chemo(CCL3)%diff_coef
-read(nfcell,*) chemo(CCL3)%halflife
-read(nfcell,*) useCCL3secretion
-read(nfcell,*) chemo(CCL3)%bdry_rate
-read(nfcell,*) chemo(CCL3)%bdry_conc
-read(nfcell,*) chemo(CCL3)%radius		! Sites within this radius of the DC receive CCL3 concentration (+ all DC sites)
+
+!!read(nfcell,*) receptor(CCR1)%strength      ! relative strength of CCL3-CCR1 chemotactic influence (chemo_K_DC)
+    read(nfcell,*) receptor(CCR1)%level(1)
+    read(nfcell,*) receptor(CCR1)%level(2)
+    read(nfcell,*) receptor(CCR1)%level(3)
+    read(nfcell,*) receptor(CCR1)%saturation_threshold	! CCL3 signal level to saturate CCR1 receptor
+    read(nfcell,*) receptor(CCR1)%refractory_time	! Time for CCR1 receptor to recover sensitivity after desensitization
+    read(nfcell,*) chemo(CCL3)%diff_coef
+    read(nfcell,*) chemo(CCL3)%halflife
+    read(nfcell,*) useCCL3secretion
+    read(nfcell,*) chemo(CCL3)%bdry_rate
+    read(nfcell,*) chemo(CCL3)%bdry_conc
+    read(nfcell,*) chemo(CCL3)%radius		! Sites within this radius of the DC receive CCL3 concentration (+ all DC sites)
 
 !read(nfcell,*) fix_avidity                  ! true if avidity takes discrete values, false if a distribution is used
 !read(nfcell,*) avidity_logscale             ! true if actual avidity = 10^(avidity_min + i*avidity_step)
@@ -649,6 +651,7 @@ read(nfcell,*) ispecial						! special case
 read(nfcell,*) specialfile					! special case input data file
 read(nfcell,*) fixedfile					! file with "fixed" parameter values
 close(nfcell)
+
 !call logger('Finished reading cell parameter file')
 
 DC_RADIUS = real_DCradius                       ! convert real -> integer

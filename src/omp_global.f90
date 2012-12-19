@@ -297,18 +297,18 @@ integer, parameter :: istep_res2 = istep_res1 + 4*60*24	! 1 day of tagging
 ! but a small fraction of tagged cells are.  The question is: what is the effect on the DC visit frequency
 ! of the tagged cells?
 ! Modify this to read the parameters from an input file.
-logical :: track_DCvisits = .false.
-logical :: TAGGED_DC_CHEMOTAXIS = .false.
+logical :: track_DCvisits = .true.
+logical :: TAGGED_DC_CHEMOTAXIS = .true.
 integer :: istep_DCvisits = 24*60*4	! 24 hours delay before counting visits (when use_traffic)
 real :: t_log_DCvisits = 2*24*60		! log DC visits of retained cells for 2 days
-logical :: USE_DC_COGNATE = .false.	! if only a fraction (0.5) of DCs bear cognate antigen, secrete chemokine
-real :: DC_COGNATE_FRACTION = 1.0
+logical :: USE_DC_COGNATE = .true.	! if only a fraction (0.5) of DCs bear cognate antigen, secrete chemokine
+real :: DC_COGNATE_FRACTION = 0.5
 logical :: retain_tagged_cells = .true.
 real :: RETAIN_TAGLIMIT_FRACTION = 0.5
-logical :: DC_CHEMO_NOTRAFFIC = .false.	! cells are tagged initially, no traffic
+logical :: DC_CHEMO_NOTRAFFIC = .true.	! cells are tagged initially, no traffic
 real :: TAGGED_CHEMO_FRACTION = 0.1		! was 0.1 for exit chemotaxis
-real :: DC_CHEMO_FRACTION = 0.4		! fraction of cells tagged when DC_CHEMO_NOTRAFFIC
-real :: HI_CHEMO_FRACTION = 0.3		! fraction of tagged cells with full chemotactic susceptibility
+real :: DC_CHEMO_FRACTION = 0.2		! fraction of cells tagged when DC_CHEMO_NOTRAFFIC
+real :: HI_CHEMO_FRACTION = 0.5		! fraction of tagged cells with full chemotactic susceptibility
 real :: HI_CHEMO = 1.0				! chemotactic susceptibility of the HI_CHEMO_FRACTION cells
 real :: LO_CHEMO = 0.0				! chemotactic susceptibility of the other tagged cells
 
