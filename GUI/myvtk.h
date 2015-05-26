@@ -15,7 +15,7 @@
 #include "vtkRenderWindowInteractor.h"
 #include "vtkProperty.h"
 #include "vtkCamera.h"
-#include <vtkMPEG2Writer.h>
+//#include <vtkMPEG2Writer.h>
 #include <vtkPNGWriter.h>
 #include <vtkJPEGWriter.h>
 #include <vtkTIFFWriter.h>
@@ -79,7 +79,7 @@ public:
 	vtkPolyDataMapper *TcellMapper;
 	vtkPolyDataMapper *DcellMapper;
 	vtkPolyDataMapper *bondMapper;
-	vtkMPEG2Writer *mpg;
+//	vtkMPEG2Writer *mpg;
 //	vtkSmartPointer<vtkPNGWriter> writer;
 //	vtkSmartPointer<vtkBMPWriter> writer;
 	vtkSmartPointer<vtkJPEGWriter> writer;
